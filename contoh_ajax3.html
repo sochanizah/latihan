@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background: #dfe7ec; font-family: Verdana; font-size: 16px">
+    <span style="font-size: 16px">Cuisine We Offer:</span>
+    <select id="dropdown_selector" style="width: 190px">
+      <option value="content1">American</option>
+      <option selected value="content2">Italian</option>
+      <option value="content3">Indonesia</option>
+    </select>
+    <br />
+    <br />
+    Food Items :
+    <div id="contentarea" style="font-size: 16px">
+      <ol>
+        <li>Chicken parmigiana</li>
+        <li>Veal marsala</li>
+        <li>Lasagna</li>
+        <li>Pasta primavera</li>
+        <li>Shrimp fra diavolo</li>
+      </ol>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#dropdown_selector").change(function () {
+          var option = $(this).find("option:selected").val();
+          if (option == "content1") {
+            $.ajax({
+              url: "content1.html",
+              success: function (result) {
+                $("#contentarea").html(result);
+              },
+            });
+          } else if (option == "content2") {
+            $.ajax({
+              url: "content2.html",
+              success: function (result) {
+                $("#contentarea").html(result);
+              },
+            });
+          } else {
+            $.ajax({
+              url: "content3.html",
+              success: function (result) {
+                $("#contentarea").html(result);
+              },
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
